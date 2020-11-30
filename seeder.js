@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGO_URI,{useNewUrlParser:true,
  const Standing =   require("./models/Standing")
 
 // load  the json data 
-const standings =  JSON.parse(fs.readFileSync(`${__dirname}/data/standings.json`,'utf-8'))
+const standings =  JSON.parse(fs.readFileSync(`${__dirname}/_data/standings.json`,'utf-8'))
 
 //Import Data  
  const  importData = async() =>{
