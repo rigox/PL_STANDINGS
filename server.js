@@ -27,7 +27,7 @@ app.use(errorHandler)
 //load routes
 const standings =  require("./routes/standing")
 //setup routes
-app.get('/', (req,res)=>{res.send("welcome to PL STANDINGS!!")})
+app.get('/', (req,res)=>{res.send("welcome to PL STANDINGS!!!! dude")})
 app.use('/api/v1/standings',standings)
 
 

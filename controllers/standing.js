@@ -2,6 +2,8 @@ const  Standings =  require("../models/Standing")
 const asyncHandler =  require("../middleware/async")
 const errorResponse =   require("../middleware/error");
 const ErrorResponse = require("../utils/errorResponse");
+const fs =  require("fs")
+const  color =   require("colors")
 const { Error } = require("mongoose");
 
 //@desc gets all standings
@@ -73,3 +75,30 @@ exports.getRelagationZone =  asyncHandler(async(req,res,next)=>{
 
       res.status(200).json({success:true,data:rel})
 });
+
+
+//@desc seeder for the databae
+//@route POST  /api/v1/standings/
+//@access private
+exports.seeder =  async(req,res,next) =>{
+try {
+    const teams =  JSON.parse(fs.readFileSync('../_data/standings.json','utf-8'))
+    await Standings.create(teams)
+    console.log('Data Imported....'.green.inverse)
+    res.status(200).json({success:true})
+} catch (error) {
+     res.status(500).json({error}) 
+}    
+}
+
+//@desc seeder for the database
+//@route DELETE  /api/v1/standings/
+//@access private
+exports.deleteStandings = asyncHandler(async(req,res,next)=>{
+    await Standings.deleteMany()
+    console.log('Data deleted....'.green.inverse)
+    
+    res.status(200).json({success:true})
+    
+   
+   });

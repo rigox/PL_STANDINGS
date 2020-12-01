@@ -1,11 +1,14 @@
 const express =  require("express")
 const router =   express.Router()
   
-const  {getStandings , updateStanding , getTop6,getRelagationZone} =  require("../controllers/standing")
+const {getStandings , updateStanding , getTop6 ,
+    getRelagationZone ,seeder, deleteStandings } =  require("../controllers/standing")
 
 router
     .route("/")
         .get(getStandings)
+        .post(seeder)
+        .delete(deleteStandings)
 
 router
     .route('/top')  
@@ -19,5 +22,7 @@ router
     .route('/relegation')
         .get(getRelagationZone)
 
+router
 
+        
 module.exports = router;

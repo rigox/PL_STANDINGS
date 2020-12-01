@@ -9,7 +9,7 @@ dotenv.config({path:"./config/config.env"})
 
 
 //connect to database
-mongoose.connect(process.env.MONGO_URI,{useNewUrlParser:true,
+mongoose.connect(process.env.MONGO_URI2,{useNewUrlParser:true,
     useCreateIndex:true,useFindAndModify:true,useUnifiedTopology:true})
 
 //import the standing model
